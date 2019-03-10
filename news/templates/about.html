@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="jumbotron">
+
+    <h1 class="display-4">Hello, readers!</h1>
+    <br>
+    <p class="lead">Welcome to myNewsAppetite, a website that brings you news from different sites all in one place. Be it TOI or BBC News, be it Business or Entertainment news, we have it all. But that's not it. You can also search for news articles regarding any topic now.<br><br> So sit back and enjoy browsing through myNewsAppetite. Don't worry if you hate websites. We have also got an android app for you. Download the app now : <a href="https://play.google.com/store/apps/details?id=com.yansh.rays.apinewsfeed&hl=en"> myNewsAppetite on Play store </a> </p>
+    <hr class="my-4">
+    <p>Developed by coolyansh, myNewsAppetite is a personal project built on the Django framework. It utilises API calls from NewsAPI and displays the results in an organized and stylish manner. While you may not like the site, he doesn't care(actually he cares, don't tell on his face that this site is shit. He might get sad. Very sad). But building this site helped him learn and harness his skills in web development. And so he is very proud of this site. And his app also. Nah, not that much actually. </p>   
+
+    <ul style="list-style-type: none;overflow: hidden;">
+    <li style="float: left;padding-right: 10px">
+      <a href="https://github.com/coolyansh" role="button" target="_blank">
+        <img src="{% static 'images/github.png' %}" height="40px" width="40px"  ></a>
+    </li>
+    <li style="float: left;padding-right: 10px">
+      <a href="https://in.linkedin.com/in/shreyansh-ray-5b0006167" role="button" target="_blank">
+        <img src="{% static 'images/linkedin.png' %}" height="40px" width="40px" ></a>
+    </li>
+    <li style="float: left;padding-right: 10px">
+      <a href="https://www.facebook.com/shreyansh.ray" role="button" target="_blank">
+        <img src="{% static 'images/facebook.png' %}" height="40px" width="40px" ></a>
+    </li>
+    <li style="float: left;padding-right: 10px">
+      <a href="https://twitter.com/CoolyanshRAY" role="button" target="_blank">
+        <img src="{% static 'images/twitter.png' %}" height="40px" width="40px" ></a>
+    </li>
+    </ul>
+
+  </div>
+{% endblock %}

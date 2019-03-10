@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="jumbotron">
+
+    <h1 class="display-4">Oops :(</h1>
+    <br>
+    <p class="lead">Looks like we have encountered a problem. </p>
+    <hr class="my-4">
+    <p>Sorry for the inconvenience. Here are a few reasons due to which errors might have occured.</p>
+
+    <ul>
+      <li>We might have been rate limited. We use the free version of NewsAPI and might have exceeded the allowed number of API calls</li>
+      <li>Some parameters might be missing in the API call. For example search parameters(often searching for empty string might cause this problem) </li>
+      <li>Our source(NewsAPI) might be down for a while due to technical issues</li>
+      <li>It's not always us. Sometimes your internet connection might be at a fault too :)</li>
+    
+    </ul>
+
+    <p>Try reloading. If error persists try after some time.</p>
+
+  </div>
+{% endblock %}

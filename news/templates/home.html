@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% if api.totalResults == 0 %}
+		<h5 style="padding: 50px">No search Results returned for : ' {{keyword}} '</h5>
+	{% elif keyword %}
+		<h5 style="padding-top:20px;padding-left: 10px;">Top search results returned for ' {{keyword}} ' : </h5>
+	{% endif %}
+
+	<div class="card-columns" style="padding: 10px;padding-top: 20px">
+
+	{% for article in api.articles %}
+	  <div class="card">
+	    <a href="{{ article.url }}" target="_blank"><img src="{{ article.urlToImage }}" class="card-img-top" alt="">
+	    <div class="card-body">
+	      <h5 class="card-title">{{ article.title }}</h5>
+	      <p class="card-text">{{ article.description }}</p>
+	      <p class="card-text"><small class="text-muted">Published at : {{article.publishedAt}}</small></p></a>
+	    </div>
+	  </div>
+	{% endfor %}
+	</div>
+{% endblock %}
