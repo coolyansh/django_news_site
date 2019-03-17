@@ -10,4 +10,6 @@ urlpatterns = [
     path('tech',views.tech,name='tech'),
     path('search',views.search,name='search'),
     path('about',views.about,name='about'),
+    path('convert',views.convert,name='convert'),
+    path('convert/json',views.convert_json,name='convert_json')
 ]

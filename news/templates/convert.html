@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Convert to JSON</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div style="padding: 50px;">
+
+  <div class="card" class="border-primary">
+  <div class="card-header text-primary">
+    Welcome to the Google Forms to Json converter.
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Now easily customise your google form.</h5>
+    <p class="card-text">Don't like the appearance of google forms ? Want to customise it ? Want to add a timer for conducting a quiz. You have come to the right place.<br><hr>Just enter your google forms url and click on 'Convert to Json' to get data of your Google forms in Json Format. Having the data now allows you to have greater control over your form as now you can customise your own appearance or add more custom features like a countdown timer.<br><hr>Click on 'See some magic' to see a demo site where we take the Json data of the url provided and try to give the form a new appearance(which is not that good as we are very bad at front end designs).</p>
+    <div class="card-footer">
+      <small class="text-muted">Note: Currently we only support Short text and Radio Options in Google forms. It is a work in progress project and we will be adding support for more constarints soon.</small>
+    </div>
+  </div>
+  </div>
+
+<form action="{% url 'convert_json' %}" method="POST" style="margin-top: 20px">
+  {%csrf_token%}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter url for Google Forms page:</label>
+    <input type="text" class="form-control" name="url" placeholder="Enter url">
+    <small id="urlHelp" class="form-text text-muted">The url you entered will be convered to JSON.</small>
+  </div>
+  <div style="padding: 5px;float: left;"><button type="submit" class="btn btn-primary" name="_convert">Convert to JSON</button></div>
+  <div style="padding: 5px;float: left;"><button type="submit" class="btn btn-primary" name="_viewform">See Demo Site</button></div>
+</form>
+<br><br><br>
+<hr>
+
+ <div class="card border-primary" style="padding: 20px">
+  <div class="card-title text-primary">
+    Here's an example of a simple form containing only name and email fields.(<a href="https://docs.google.com/forms/d/e/1FAIpQLScpSCFN_IkiZs3ILSfm6XhP69Do5THwcuiD9ijbP1IxWnDdAA/viewform?usp=sf_link" target="_blank">Link to form</a>)
+  </div>
+  <div class="card-body">
+    <code>
+      {
+        "status_code": 200,
+        "responseLink": "https://docs.google.com/forms/d/e/1FAIpQLScpSCFN_IkiZs3ILSfm6XhP69Do5THwcuiD9ijbP1IxWnDdAA/formResponse",
+        "title": "Example form",
+        "description": "Example form to demonstrate Google forms to Json converter",
+        "count": 2,
+        "questions": [
+          {
+            "type": "text",
+            "text": "Name",
+            "img": "",
+            "name": "entry.72720029",
+            "options": []
+          },
+          {
+            "type": "text",
+            "text": "Email Address",
+            "img": "",
+            "name": "entry.1135280630",
+            "options": []
+          }
+        ]
+      }
+    </code>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
