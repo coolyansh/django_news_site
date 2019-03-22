@@ -2,20 +2,20 @@
 {% load static %}
 <html>
 <head>
-	<title>Custom Layout</title>
+	<title>Demo Form</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
-<body background="{% static 'images/background.jpg' %}" >
+<body background="{% static 'images/background.jpeg' %}" >
 
-{% if result.status_code == 200 %}
+{% if result.count > 0 %}
 
-<div class="card" style="margin: 15px">
+<div class="card" style="margin: 40px">
   <div class="card-header">
-    Welcome to the custom form layout example.
+    Welcome to the Demo Form example.
   </div>
   <div class="card-body">
     <h5 class="card-title">{{result.title}}</h5>
@@ -25,7 +25,7 @@
 
 {% else %}
 
-<div class="card"  style="margin: 15px">
+<div class="card"  style="margin: 40px">
   <div class="card-header">
     Welcome to the custom form layout example.
   </div>
@@ -37,36 +37,54 @@
 
 {% endif %}
 
+<hr>
+
 {% if result.count != 0 %}
 
-<form action="{{result.responseLink}}" method="POST">
+<form action="{{result.responseLink}}" method="POST" style="margin: 40px">
 {% for question in result.questions %}
 
 <div class="form-group"  style="padding: 15px">
 
 	{% if question.type == "text" %}
-		<div class="card border-primary">
-  			<img src="{{question.img}}" class="card-img-top" >
+		<div class="card border-primary" >
+			{% if question.img != "" %}
+  			<img src="{{question.img}}" class="card-img-top" style="object-fit: cover;height: 20rem;">
+  			{% endif %}
   			<div class="card-body">
-    		<h5 class="card-title text-primary">{{question.text}}</h5>
-    		<p class="card-text"><input type="text" class="form-control" name="{{question.name}}" ></p>
+    		<h5 class="card-title text-primary" >{{question.text}}</h5>
+    		<p class="card-text">
+    			{% if question.required == "true" %}
+    			<input type="text" class="form-control" name="{{question.name}}" required>
+    			{% else %}
+    			<input type="text" class="form-control" name="{{question.name}}" >
+    			{% endif %}
+    		</p>
   			</div>
 		</div>
 	    <br>
 	{% elif question.type == "radio_group" %}
 		<div class="card border-primary">
-  			<img src="{{question.img}}" class="card-img-top" >
+			{% if question.img != "" %}
+  			<img src="{{question.img}}" class="card-img-top" style="object-fit: cover;height: 20rem">
+  			{% endif %}
   			<div class="card-body">
-    		<p class="card-text text-primary">{{question.text}}</p>
+    		<h5 class="card-text text-primary">{{question.text}}</h5>
   			</div>
 		</div>
 		<br>
 		<div class="card-deck">
 		{% for option in question.options %}
 		<div class="card border-secondary">
-  			<img src="{{option.img_url}}" class="card-img-top" max-height="200px" max-width="150px">
-  			<div class="card-footer">
+			{% if option.img_url != "" %}
+  			<img src="{{option.img_url}}" class="card-img-top" style="object-fit: cover;height: 20rem">
+  			{% endif %}
+  			<div class="card-footer" style="margin-left: 5px">
+  				{% if question.required == "true" %}
+    			<input class="form-check-input" type="radio" name="{{question.name}}" required value="{{option.text}}" >
+    			{% else %}
     			<input class="form-check-input" type="radio" name="{{question.name}}" value="{{option.text}}" >
+    			{% endif %}
     			<label class="form-check-label text-secondary" >{{option.text}}</label>
   			</div>
 		</div>  	

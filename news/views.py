@@ -136,10 +136,16 @@ def convert_json(request):
 	    img_url=""
 	    options=[]
 	    name=""
-	    required=False
+	    required="false"
 
 	    if question["class"][0]==q_container:
 	        question=question.find('div',recursive=False)
+
+	    dict_att=question.attrs
+	    if "data-required" in dict_att:
+	        	required=str(dict_att["data-required"])
+	    else :
+	        	required="false"
 	        
 	    d_class_list=question["class"]
 	    f1=False
@@ -199,7 +205,7 @@ def convert_json(request):
 	    else:
 	        qtype="unknown"
 
-	    questions.append({"type":qtype,"text":text,"img":img_url,"name":name,"options":options})
+	    questions.append({"type":qtype,"required":required,"text":text,"img":img_url,"name":name,"options":options})
 
 	dic={"status_code":r.status_code,"responseLink":link,"title":title,"description":description,"count":num,"questions":questions}
 	res_str=json.dumps(dic)

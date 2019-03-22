@@ -18,7 +18,7 @@
   </div>
   <div class="card-body">
     <h5 class="card-title">Now easily customise your google form.</h5>
-    <p class="card-text">Don't like the appearance of google forms ? Want to customise it ? Want to add a timer for conducting a quiz. You have come to the right place.<br><hr>Just enter your google forms url and click on 'Convert to Json' to get data of your Google forms in Json Format. Having the data now allows you to have greater control over your form as now you can customise your own appearance or add more custom features like a countdown timer.<br><hr>Click on 'See some magic' to see a demo site where we take the Json data of the url provided and try to give the form a new appearance(which is not that good as we are very bad at front end designs).</p>
+    <p class="card-text">Don't like the appearance of google forms ? Want to customise it ? Want to add a timer for conducting a quiz. You have come to the right place.<br><hr>Just enter your google forms url and click on 'Convert to Json' to get data of your Google forms in Json Format. Having the data now allows you to have greater control over your form as now you can customise your own appearance or add more custom features like a countdown timer.<br><hr>Click on 'See demo site' to see a demo site where we take the Json data of the url provided and try to give the form a new appearance(which is not that good as we are very bad at front end designs).</p>
     <div class="card-footer">
       <small class="text-muted">Note: Currently we only support Short text and Radio Options in Google forms. It is a work in progress project and we will be adding support for more constarints soon.</small>
     </div>
@@ -30,7 +30,7 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Enter url for Google Forms page:</label>
     <input type="text" class="form-control" name="url" placeholder="Enter url">
-    <small id="urlHelp" class="form-text text-muted">The url you entered will be convered to JSON.</small>
+    <small id="urlHelp" class="form-text text-muted">E.g, <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-OjZGIieeZ1KIL9nJe0H8V6psP9hSXy-QcF2gC1RltfF8Aw/viewform">https://docs.google.com/forms/d/e/1FAIpQLSd-OjZGIieeZ1KIL9nJe0H8V6psP9hSXy-QcF2gC1RltfF8Aw/viewform</a></small>
   </div>
   <div style="padding: 5px;float: left;"><button type="submit" class="btn btn-primary" name="_convert">Convert to JSON</button></div>
   <div style="padding: 5px;float: left;"><button type="submit" class="btn btn-primary" name="_viewform">See Demo Site</button></div>
@@ -53,6 +53,7 @@
         "questions": [
           {
             "type": "text",
+            "required": "false"
             "text": "Name",
             "img": "",
             "name": "entry.72720029",
@@ -60,6 +61,7 @@
           },
           {
             "type": "text",
+            "required": "false"
             "text": "Email Address",
             "img": "",
             "name": "entry.1135280630",
